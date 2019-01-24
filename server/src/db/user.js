@@ -4,12 +4,15 @@ module.exports = {
   getLogin: function(username) {
     let query = db('users');
     return query
-      .where('name', name)
+      .where('username', username)
       .first();
   },
   insert: function(user) {
     return db('users')
       .insert(user)
       .then(([id]) => id );
+  },
+  get: function() {
+    return db('users').select('id', 'username', 'department');
   },
 };
